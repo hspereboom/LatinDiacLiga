@@ -1,0 +1,4 @@
+The `LatinDiagLiga` project offers static code for normalizing unicode text to a derivation-invariant form, by replacing latin-originated glyphs with their base glyphs.
+
+All code is distributed under the MIT license https://opensource.org/license/mit.
+For easy comparison with other licenses, see https://choosealicense.com/licenses.
