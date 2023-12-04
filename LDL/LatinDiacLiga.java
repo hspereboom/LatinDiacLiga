@@ -306,7 +306,7 @@ public final class LatinDiacLiga {
 				return true;
 			default:
 				norm.appendCodePoint(seq);
-				return false;
+				return ucp != seq;
 		}
 	}
 
