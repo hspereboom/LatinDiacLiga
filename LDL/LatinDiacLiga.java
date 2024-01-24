@@ -238,7 +238,7 @@ public final class LatinDiacLiga {
 	 */
 	public static boolean asInvariantText(final StringBuilder norm, final int axis, final char[] data, final int from, final int till) {
 		int ucp;
-		char[] ia5 = new char[3];
+		char[] ia5 = new char[4];
 		boolean mod = false;
 
 		for (int k = from, n = till; k < n; k += Character.charCount(ucp)) {
@@ -276,7 +276,7 @@ public final class LatinDiacLiga {
 	 */
 	public static boolean asInvariantText(final StringBuilder norm, final int axis, final String data, final int from, final int till) {
 		int ucp;
-		char[] ia5 = new char[3];
+		char[] ia5 = new char[4];
 		boolean mod = false;
 
 		for (int k = from, n = till; k < n; k += Character.charCount(ucp)) {
@@ -300,7 +300,7 @@ public final class LatinDiacLiga {
 		int seq;
 
 		switch (seq = xl8(axis, ucp, ia5)) {
-			case 1: case 2: case 3:
+			case 1: case 2: case 3: case 4:
 				norm.append(ia5, 0, seq);
 			case 0:
 				return true;
@@ -316,6 +316,10 @@ public final class LatinDiacLiga {
 	 *   [U+00080~000FF] Latin-1 Supplement
 	 *   [U+00100~0017F] Latin Extended-A
 	 *   [U+00180~0024F] Latin Extended-B
+	 *   [U+002B0~002FF] Spacing Modifier Letters
+	 *   [U+00600~006FF] Arabic
+	 *   [U+00700~0074F] Syriac
+	 *   [U+01400~0167F] Unified Canadian Aboriginal Syllabics
 	 *   [U+01680~0169F] Ogham
 	 *   [U+01800~018AF] Mongolian
 	 *   [U+01D00~01D7F] Phonetic Extensions
@@ -323,19 +327,31 @@ public final class LatinDiacLiga {
 	 *   [U+02000~0206F] General Punctuation
 	 *   [U+02070~0209F] Superscripts and Subscripts
 	 *   [U+02100~0214F] Letterlike Symbols
+	 *   [U+02200~022FF] Mathematical Operators
 	 *   [U+02300~023FF] Miscellaneous Technical
 	 *   [U+02400~0243F] Control Pictures
 	 *   [U+02460~024FF] Enclosed Alphanumerics
+	 *   [U+025A0~025FF] Geometric Shapes
 	 *   [U+02700~027BF] Dingbats
+	 *   [U+02980~029FF] Miscellaneous Mathematical Symbols-B
+	 *   [U+02A00~02AFF] Supplemental Mathematical Operators
 	 *   [U+02C60~02C7F] Latin Extended-C
 	 *   [U+02E00~02E7F] Supplemental Punctuation
 	 *   [U+03000~0303F] CJK Symbols and Punctuation
+	 *   [U+030A0~030FF] Katakana
 	 *   [U+03200~032FF] Enclosed CJK Letters and Months
 	 *   [U+0A720~0A7FF] Latin Extended-D
 	 *   [U+0AB30~0AB6F] Latin Extended-E
 	 *   [U+0FB00~0FB4F] Alphabetic Presentation Forms
+	 *   [U+0FE10~0FE1F] Vertical Forms
+	 *   [U+0FE50~0FE6F] Small Form Variants
 	 *   [U+0FE70~0FEFF] Arabic Presentation Forms-B
 	 *   [U+0FF00~0FFEF] Halfwidth and Fullwidth Forms
+	 *   [U+10100~1013F] Aegean Numbers
+	 *   [U+10900~1091F] Phoenician
+	 *   [U+10A00~10A5F] Kharoshthi
+	 *   [U+10AC0~10AFF] Manichaean
+	 *   [U+11000~1107F] Brahmi
 	 *   [U+1D400~1D7FF] Mathematical Alphanumeric Symbols
 	 *   [U+1F100~1F1FF] Enclosed Alphanumeric Supplement
 	 *   [U+1F650~1F67F] Ornamental Dingbats
@@ -346,7 +362,7 @@ public final class LatinDiacLiga {
 		final int ucp,
 		final char[] ia5
 	) {
-		char ia5_0 = 0, ia5_1 = 0, ia5_2 = 0;
+		char ia5_0 = 0, ia5_1 = 0, ia5_2 = 0, ia5_3 = 0;
 
 		do {
 			//
@@ -572,34 +588,34 @@ public final class LatinDiacLiga {
 					ia5_0 = 'L'; ia5_1 = 'L'; break;
 				case 0x01EFB:
 					ia5_0 = 'l'; ia5_1 = 'l'; break;
-				case 0x0A728:
-					ia5_0 = 'T'; ia5_1 = 'Z'; break;
-				case 0x0A729:
-					ia5_0 = 't'; ia5_1 = 'z'; break;
 				case 0x0A732:
 					ia5_0 = 'A'; ia5_1 = 'A'; break;
-				case 0x0A733:
-					ia5_0 = 'a'; ia5_1 = 'a'; break;
 				case 0x0A734:
 					ia5_0 = 'A'; ia5_1 = 'O'; break;
-				case 0x0A735:
-					ia5_0 = 'a'; ia5_1 = 'o'; break;
 				case 0x0A736:
 					ia5_0 = 'A'; ia5_1 = 'U'; break;
-				case 0x0A737:
-					ia5_0 = 'a'; ia5_1 = 'u'; break;
 				case 0x0A738: case 0x0A73A:
 					ia5_0 = 'A'; ia5_1 = 'V'; break;
-				case 0x0A739: case 0x0A73B:
-					ia5_0 = 'a'; ia5_1 = 'v'; break;
 				case 0x0A73C:
 					ia5_0 = 'A'; ia5_1 = 'Y'; break;
-				case 0x0A73D:
-					ia5_0 = 'a'; ia5_1 = 'y'; break;
 				case 0x0A74E:
 					ia5_0 = 'O'; ia5_1 = 'O'; break;
+				case 0x0A728:
+					ia5_0 = 'T'; ia5_1 = 'Z'; break;
+				case 0x0A733:
+					ia5_0 = 'a'; ia5_1 = 'a'; break;
+				case 0x0A735:
+					ia5_0 = 'a'; ia5_1 = 'o'; break;
+				case 0x0A737:
+					ia5_0 = 'a'; ia5_1 = 'u'; break;
+				case 0x0A739: case 0x0A73B:
+					ia5_0 = 'a'; ia5_1 = 'v'; break;
+				case 0x0A73D:
+					ia5_0 = 'a'; ia5_1 = 'y'; break;
 				case 0x0A74F:
 					ia5_0 = 'o'; ia5_1 = 'o'; break;
+				case 0x0A729:
+					ia5_0 = 't'; ia5_1 = 'z'; break;
 				case 0x0FB00:
 					ia5_0 = 'f'; ia5_1 = 'f'; break;
 				case 0x0FB01:
@@ -650,12 +666,12 @@ public final class LatinDiacLiga {
 					ia5_0 = 't'; break;
 				case 0x02093:
 					ia5_0 = 'x'; break;
+				case 0x0A770:
+					ia5_0 = 'c'; break;
 				case 0x02C7C:
 					ia5_0 = 'j'; break;
 				case 0x02C7D:
 					ia5_0 = 'v'; break;
-				case 0x0A770:
-					ia5_0 = 'c'; break;
 			}
 
 			if (ia5_0 != 0) break;
@@ -899,34 +915,34 @@ public final class LatinDiacLiga {
 					ia5_0 = 'M'; break;
 				case 0x02C7E: case 0x0A76C: case 0x0A784: case 0x0A7A8: case 0x0A7C9: case 0x0A7D6: case 0x0A7D8:
 					ia5_0 = 'S'; break;
-				case 0x02C71: case 0x02C74: case 0x0A75F: case 0x0A769:
-					ia5_0 = 'v'; break;
 				case 0x0A773: case 0x0AB3A:
 					ia5_0 = 'm'; break;
 				case 0x0A7B9: case 0x0AB4E: case 0x0AB4F: case 0x0AB52:
 					ia5_0 = 'u'; break;
-				case 0x0A746:
-					ia5_0 = 'L'; ia5_1 = 'L'; break;
-				case 0x0A747: case 0x0A78E:
-					ia5_0 = 'l'; ia5_1 = 'l'; break;
-				case 0x0A760:
-					ia5_0 = 'V'; ia5_1 = 'Y'; break;
-				case 0x0A761:
-					ia5_0 = 'v'; ia5_1 = 'y'; break;
-				case 0x0A765: case 0x0A767: case 0x0A7D3:
-					ia5_0 = 't'; ia5_1 = 'h'; break;
+				case 0x02C71: case 0x02C74: case 0x0A75F: case 0x0A769:
+					ia5_0 = 'v'; break;
 				case 0x0AB56: case 0x0AB57: case 0x0AB58: case 0x0AB59:
 					ia5_0 = 'x'; break;
+				case 0x0A746:
+					ia5_0 = 'L'; ia5_1 = 'L'; break;
+				case 0x0A760:
+					ia5_0 = 'V'; ia5_1 = 'Y'; break;
 				case 0x0AB61:
 					ia5_0 = 'i'; ia5_1 = 'e'; break;
 				case 0x0AB62:
 					ia5_0 = 'o'; ia5_1 = 'e'; break;
+				case 0x0A747: case 0x0A78E:
+					ia5_0 = 'l'; ia5_1 = 'l'; break;
 				case 0x0AB48: case 0x0AB4A:
 					ia5_0 = 'r'; ia5_1 = 'r'; break;
+				case 0x0A765: case 0x0A767: case 0x0A7D3:
+					ia5_0 = 't'; ia5_1 = 'h'; break;
 				case 0x0AB50: case 0x0AB51:
 					ia5_0 = 'u'; ia5_1 = 'i'; break;
 				case 0x0AB63:
 					ia5_0 = 'u'; ia5_1 = 'o'; break;
+				case 0x0A761:
+					ia5_0 = 'v'; ia5_1 = 'y'; break;
 			}
 
 			if (ia5_0 != 0) break;
@@ -935,7 +951,7 @@ public final class LatinDiacLiga {
 			// Numeric
 			//
 			switch (ucp) {
-				case 0x03007: case 0x02070: case 0x02080: case 0x024EA: case 0x024FF: case 0x1D7CE: case 0x1D7D8: case 0x1D7E2:
+				case 0x02070: case 0x02080: case 0x03007: case 0x024EA: case 0x024FF: case 0x1D7CE: case 0x1D7D8: case 0x1D7E2:
 				case 0x1D7EC: case 0x1D7F6: case 0x1F100: case 0x1F101: case 0x1F10B: case 0x1F10C: case 0x1FBF0: case 0x0FF10:
 					ia5_0 = '0'; break;
 				case 0x000B9: case 0x02081: case 0x02460: case 0x02474: case 0x02488: case 0x024F5: case 0x1D7CF: case 0x1D7D9:
@@ -1072,12 +1088,12 @@ public final class LatinDiacLiga {
 			switch (ucp) {
 				case 0x0000D: case 0x0200B: case 0x0200C: case 0x0200D: case 0x0FEFF:
 					return 0;
+				case 0x0000A: case 0x0000B: case 0x0000C: case 0x00085: case 0x02028: case 0x02029: case 0x02424:
+					ia5_0 = '\n'; break;
 				case 0x00009: case 0x00020: case 0x000A0: case 0x02000: case 0x02001: case 0x02002: case 0x02003: case 0x02004:
 				case 0x02005: case 0x02006: case 0x02007: case 0x02008: case 0x02009: case 0x0200A: case 0x0202F: case 0x0205F:
 				case 0x02060: case 0x03000: case 0x01680: case 0x0237D: case 0x02420: case 0x02422: case 0x02423:
 					ia5_0 = ' '; break;
-				case 0x0000A: case 0x0000B: case 0x0000C: case 0x00085: case 0x02028: case 0x02029: case 0x02424:
-					ia5_0 = '\n'; break;
 			}
 
 			if (ia5_0 != 0) break;
@@ -1206,21 +1222,51 @@ public final class LatinDiacLiga {
 				case 0x0A78B: case 0x0A78C: case 0x0FF07: case 0x0275B: case 0x0275C: case 0x0275F:
 					ia5_0 = '\''; break;
 				case 0x000AD: case 0x000B7: case 0x02010: case 0x02011: case 0x02012: case 0x02013: case 0x02014: case 0x02015:
-				case 0x02022: case 0x02023: case 0x02027: case 0x02043: case 0x0204C: case 0x0204D: case 0x0207B: case 0x0208B:
-				case 0x0FF0D: case 0x0FF65: case 0x023AF:
+				case 0x02043: case 0x0204C: case 0x0204D: case 0x0207B: case 0x0208A: case 0x0208B: case 0x02212: case 0x02296:
+				case 0x0229D: case 0x0229F: case 0x02A3A: case 0x01428: case 0x0FF0D: case 0x023AF: case 0x02796: case 0x0FE58:
+				case 0x0FE63:
 					ia5_0 = '-'; break;
 				case 0x000AF: case 0x02017: case 0x0203E: case 0x0203F: case 0x02040: case 0x02050: case 0x02054: case 0x0FF3F:
 					ia5_0 = '_'; break;
-				case 0x001C3: case 0x0FF01: case 0x02755: case 0x02757: case 0x02E53:
+				case 0x001C3: case 0x0FF01: case 0x02755: case 0x02757: case 0x02E53: case 0x0FE15: case 0x0FE57:
 					ia5_0 = '!'; break;
+				case 0x02297: case 0x022A0: case 0x02A02: case 0x02A36: case 0x02A37:
+					ia5_0 = 'x'; break;
+				case 0x02114: case 0x0FF03: case 0x0FE5F:
+					ia5_0 = '#'; break;
+				case 0x0229C: case 0x030A0: case 0x0FF1D: case 0x02E40: case 0x0FE66:
+					ia5_0 = '='; break;
+				case 0x0204E: case 0x02217: case 0x0229B: case 0x029C6: case 0x0FF0A: case 0x02731: case 0x0FE61:
+					ia5_0 = '*'; break;
+				case 0x0207A: case 0x02295: case 0x0229E: case 0x02A01: case 0x02A39: case 0x01429: case 0x0FF0B: case 0x02795:
+				case 0x0FE62:
+					ia5_0 = '+'; break;
+				case 0x02236: case 0x00703: case 0x0FF1A: case 0x0FE13: case 0x0FE55:
+					ia5_0 = ':'; break;
+				case 0x0204F: case 0x0061B: case 0x0FF1B: case 0x0FE14:
+					ia5_0 = ';'; break;
+				case 0x02044: case 0x02215: case 0x02216: case 0x02298: case 0x029C4: case 0x029F8: case 0x1F67C: case 0x0FF0F:
+					ia5_0 = '/'; break;
+				case 0x029B8: case 0x029C5: case 0x029F5: case 0x029F9: case 0x1F67D: case 0x0FF3C:
+					ia5_0 = '\\'; break;
 				case 0x0201C: case 0x0201D: case 0x0201E: case 0x0201F: case 0x0301D: case 0x0301E: case 0x0301F: case 0x0FF02:
 				case 0x0275D: case 0x0275E: case 0x02760:
 					ia5_0 = '\"'; break;
+				case 0x1F670: case 0x1F671: case 0x1F672: case 0x1F673: case 0x1F674: case 0x1F675: case 0x0FF06: case 0x0FE60:
+					ia5_0 = '&'; break;
+				case 0x002DC: case 0x0223C: case 0x0223D: case 0x0FF5E:
+					ia5_0 = '~'; break;
+				case 0x02022: case 0x02023: case 0x02027: case 0x02219: case 0x02299: case 0x022A1: case 0x025E6: case 0x029BE:
+				case 0x029BF: case 0x02A00: case 0x01427: case 0x030FB: case 0x0FF65: case 0x10101: case 0x1091F: case 0x10A50:
+				case 0x10AF4: case 0x11049: case 0x02E31:
+					ia5_0 = '·'; break;
+				case 0x029BC: case 0x02A38: case 0x02E13: case 0x02797:
+					ia5_0 = '÷'; break;
 				case 0x02024: case 0x0FF0E: case 0x02396:
 					ia5_0 = '.'; break;
-				case 0x02025:
+				case 0x02025: case 0x00705:
 					ia5_0 = '.'; ia5_1 = '.'; break;
-				case 0x02026:
+				case 0x02026: case 0x022EF:
 					ia5_0 = '.'; ia5_1 = '.'; ia5_2 = '.'; break;
 				case 0x02033: case 0x02036:
 					ia5_0 = '\''; ia5_1 = '\''; break;
@@ -1234,20 +1280,28 @@ public final class LatinDiacLiga {
 					ia5_0 = '?'; ia5_1 = '?'; break;
 				case 0x02049:
 					ia5_0 = '!'; ia5_1 = '?'; break;
-				case 0x0204E:
-					ia5_0 = '*'; break;
-				case 0x0204F: case 0x0FF1B:
-					ia5_0 = ';'; break;
-				case 0x02114:
-					ia5_0 = '#'; break;
-				case 0x1F670: case 0x1F671: case 0x1F672: case 0x1F673:
-					ia5_0 = '&'; break;
-				case 0x0FF0C: case 0x0FF64:
-					ia5_0 = ','; break;
-				case 0x0FF1A:
-					ia5_0 = ':'; break;
-				case 0x0FF1F: case 0x02753: case 0x02754: case 0x02E54:
+				case 0x02254:
+					ia5_0 = ':'; ia5_1 = '='; break;
+				case 0x02A74:
+					ia5_0 = ':'; ia5_1 = ':'; ia5_2 = '='; ia5_3 = '='; break;
+				case 0x02255:
+					ia5_0 = '='; ia5_1 = ':'; break;
+				case 0x02A75:
+					ia5_0 = '='; ia5_1 = '='; break;
+				case 0x02A76:
+					ia5_0 = '='; ia5_1 = '='; ia5_2 = '='; break;
+				case 0x029FA:
+					ia5_0 = '+'; ia5_1 = '+'; break;
+				case 0x029FB:
+					ia5_0 = '+'; ia5_1 = '+'; ia5_2 = '+'; break;
+				case 0x1FBC4: case 0x0FF1F: case 0x02753: case 0x02754: case 0x02E54: case 0x0FE16: case 0x0FE56:
 					ia5_0 = '?'; break;
+				case 0x0066B: case 0x0FF0C: case 0x0FF64: case 0x0FE50: case 0x0FE68:
+					ia5_0 = ','; break;
+				case 0x0FF20: case 0x0FE6B:
+					ia5_0 = '@'; break;
+				case 0x01801:
+					ia5_0 = '.'; ia5_1 = '.'; ia5_2 = '.'; ia5_3 = '.'; break;
 			}
 
 			if (ia5_0 != 0) break;
@@ -1259,6 +1313,7 @@ public final class LatinDiacLiga {
 		} while (false);
 
 		final int seq =
+			ia5_3 != 0 ? 4 :
 			ia5_2 != 0 ? 3 :
 			ia5_1 != 0 ? 2 :
 			ia5_0 != 0 ? 1 : ucp;
@@ -1267,6 +1322,7 @@ public final class LatinDiacLiga {
 			case AXIS_LOWERCASE: {
 				switch (seq) {
 					default: return Character.toLowerCase(ucp);
+					case 4: ia5_3 = Character.toLowerCase(ia5_3);
 					case 3: ia5_2 = Character.toLowerCase(ia5_2);
 					case 2: ia5_1 = Character.toLowerCase(ia5_1);
 					case 1: ia5_0 = Character.toLowerCase(ia5_0);
@@ -1276,6 +1332,7 @@ public final class LatinDiacLiga {
 			case AXIS_UPPERCASE: {
 				switch (seq) {
 					default: return Character.toUpperCase(ucp);
+					case 4: ia5_3 = Character.toUpperCase(ia5_3);
 					case 3: ia5_2 = Character.toUpperCase(ia5_2);
 					case 2: ia5_1 = Character.toUpperCase(ia5_1);
 					case 1: ia5_0 = Character.toUpperCase(ia5_0);
@@ -1286,6 +1343,7 @@ public final class LatinDiacLiga {
 		ia5[0] = ia5_0;
 		ia5[1] = ia5_1;
 		ia5[2] = ia5_2;
+		ia5[3] = ia5_3;
 
 		return seq;
 	}
