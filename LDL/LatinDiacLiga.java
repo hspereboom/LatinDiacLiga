@@ -172,12 +172,11 @@ import javax.annotation.processing.Generated;
  *     Phonetic Extensions Supplement [U+01D80,U+01DBF]
  *     Letterlike Symbols             [U+02100,U+0214F] *5
  *     Number Forms                   [U+02150,U+0218F]
- *     Ornamental Dingbats            [U+1F650,U+1F67F] *6
  *
  *     Auxiliary Latin glyphs derived from Greek/Egyptian glyphs
  *     (e.g. U+00194, U+01E9F, U+02C6D, U+0A722-0A725)
  *
- *     Mirrored glyphs and non-IPA Phonetic glyphs *7
+ *     Mirrored glyphs and non-IPA Phonetic glyphs *6
  *     (e.g. U+0019C, U+001B9, U+001DD, U+0A78D, U+0AB31)
  *
  *     Manifesto languages
@@ -189,12 +188,11 @@ import javax.annotation.processing.Generated;
  *
  * *5 With the exception of U+02114 'lb', which contracts to '#'.
  *
- * *6 With the exception of U+1F670-1F673 'eT', which contracts to '&'.
- *
- * *7 With the exception of U+0018B-0018C 'D', which resembles U+00182 'B'.
+ * *6 With the exception of U+0018B-0018C 'D', which resembles U+00182 'B'.
  * </pre>
  *
  * @author hspereboom
+ * @version 1.2 (2024.01 punctuation corrections &amp; additions)
  * @version 1.1 (2023.12 actualized to UCS15 &amp; made heap-friendly)
  * @version 1.0 (2023.11 template overhaul &amp; method overloads)
  * @version 0.3 (2021.11 notation &amp; rendering overhaul)
