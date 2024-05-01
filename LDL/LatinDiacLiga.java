@@ -250,7 +250,7 @@ public final class LatinDiacLiga {
 		boolean mod = false;
 
 		for (int k = from, n = till; k < n; k += Character.charCount(ucp)) {
-			mod |= cat(norm, axis, ucp = data.codePointAt(k), temp);
+			mod |= cat(norm, axis, ucp = Character.codePointAt(data, k), temp);
 		}
 
 		return mod;
