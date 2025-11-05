@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (C) 2013-2024 Harry Shungo Pereboom (github.com/hspereboom)
+ * Copyright (C) 2013-2025 Harry Shungo Pereboom (github.com/hspereboom)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ import javax.annotation.processing.Generated;
  * <pre>
  * [Coverage]
  *
- * Unicode 15.0 (September 2022)
+ * Unicode 17.0 (August 2025)
  * </pre>
  *
  * <pre>
@@ -124,9 +124,10 @@ import javax.annotation.processing.Generated;
  * [Summary]
  *
  * Constructed using
+ *     http://www.unicode.org/ --> (for glyphs lacking font support)
  *     http://www.fileformat.info/info/unicode/
  *     http://codepoints.net/
- *     https://symbl.cc/jp/
+ *     https://symbl.cc/
  *     http://seesaawiki.jp/w/qvarie/d/
  *     http://www.omniglot.com/writing/index.htm
  *     http://en.wikipedia.org/wiki/Latin_script_in_Unicode
@@ -192,9 +193,10 @@ import javax.annotation.processing.Generated;
  * </pre>
  *
  * @author hspereboom
+ * @version 1.4 (2025.11 actualized to UCS-17)
  * @version 1.3 (2024.05 basic latin bypass &amp; IA5 buffer)
  * @version 1.2 (2024.01 punctuation corrections &amp; additions)
- * @version 1.1 (2023.12 actualized to UCS15 &amp; made heap-friendly)
+ * @version 1.1 (2023.12 actualized to UCS-15 &amp; made heap-friendly)
  * @version 1.0 (2023.11 template overhaul &amp; method overloads)
  * @version 0.3 (2021.11 notation &amp; rendering overhaul)
  * @version 0.2 (2018.xx additional symbols &amp; css tweaks)
@@ -354,6 +356,7 @@ public final class LatinDiacLiga {
 	 *   [U+02A00~02AFF] Supplemental Mathematical Operators
 	 *   [U+02C60~02C7F] Latin Extended-C
 	 *   [U+02E00~02E7F] Supplemental Punctuation
+	 *   [U+02E00~02E7F] Supplemental Punctuation
 	 *   [U+03000~0303F] CJK Symbols and Punctuation
 	 *   [U+030A0~030FF] Katakana
 	 *   [U+03200~032FF] Enclosed CJK Letters and Months
@@ -369,6 +372,7 @@ public final class LatinDiacLiga {
 	 *   [U+10A00~10A5F] Kharoshthi
 	 *   [U+10AC0~10AFF] Manichaean
 	 *   [U+11000~1107F] Brahmi
+	 *   [U+1CC00~1CEBF] Symbols for Legacy Computing Supplement
 	 *   [U+1D400~1D7FF] Mathematical Alphanumeric Symbols
 	 *   [U+1F100~1F1FF] Enclosed Alphanumeric Supplement
 	 *   [U+1F650~1F67F] Ornamental Dingbats
@@ -605,6 +609,8 @@ public final class LatinDiacLiga {
 					ia5_0 = 'L'; ia5_1 = 'L'; break;
 				case 0x01EFB:
 					ia5_0 = 'l'; ia5_1 = 'l'; break;
+				case 0x0204A: case 0x02E52:
+					ia5_0 = '&'; break;
 				case 0x0A732:
 					ia5_0 = 'A'; ia5_1 = 'A'; break;
 				case 0x0A734:
@@ -617,8 +623,12 @@ public final class LatinDiacLiga {
 					ia5_0 = 'A'; ia5_1 = 'Y'; break;
 				case 0x0A74E:
 					ia5_0 = 'O'; ia5_1 = 'O'; break;
+				case 0x0A7D2:
+					ia5_0 = 'T'; ia5_1 = 'H'; ia5_2 = 'T'; ia5_3 = 'H'; break;
 				case 0x0A728:
 					ia5_0 = 'T'; ia5_1 = 'Z'; break;
+				case 0x0A7D4:
+					ia5_0 = 'W'; ia5_1 = 'W'; break;
 				case 0x0A733:
 					ia5_0 = 'a'; ia5_1 = 'a'; break;
 				case 0x0A735:
@@ -697,6 +707,26 @@ public final class LatinDiacLiga {
 			// Itemized
 			//
 			switch (ucp) {
+				case 0x1CCF0:
+					ia5_0 = '0'; break;
+				case 0x1CCF1:
+					ia5_0 = '1'; break;
+				case 0x1CCF2:
+					ia5_0 = '2'; break;
+				case 0x1CCF3:
+					ia5_0 = '3'; break;
+				case 0x1CCF4:
+					ia5_0 = '4'; break;
+				case 0x1CCF5:
+					ia5_0 = '5'; break;
+				case 0x1CCF6:
+					ia5_0 = '6'; break;
+				case 0x1CCF7:
+					ia5_0 = '7'; break;
+				case 0x1CCF8:
+					ia5_0 = '8'; break;
+				case 0x1CCF9:
+					ia5_0 = '9'; break;
 				case 0x0249C: case 0x024D0:
 					ia5_0 = 'a'; break;
 				case 0x0249D: case 0x024D1:
@@ -749,57 +779,57 @@ public final class LatinDiacLiga {
 					ia5_0 = 'y'; break;
 				case 0x024B5: case 0x024E9:
 					ia5_0 = 'z'; break;
-				case 0x024B6: case 0x1F110: case 0x1F130: case 0x1F150: case 0x1F170: case 0x1F1E6:
+				case 0x024B6: case 0x1CCD6: case 0x1F110: case 0x1F130: case 0x1F150: case 0x1F170: case 0x1F1E6:
 					ia5_0 = 'A'; break;
-				case 0x024B7: case 0x1F111: case 0x1F131: case 0x1F151: case 0x1F171: case 0x1F1E7:
+				case 0x024B7: case 0x1CCD7: case 0x1F111: case 0x1F131: case 0x1F151: case 0x1F171: case 0x1F1E7:
 					ia5_0 = 'B'; break;
-				case 0x024B8: case 0x1F112: case 0x1F132: case 0x1F152: case 0x1F172: case 0x1F1E8:
+				case 0x024B8: case 0x1CCD8: case 0x1F112: case 0x1F132: case 0x1F152: case 0x1F172: case 0x1F1E8:
 					ia5_0 = 'C'; break;
-				case 0x024B9: case 0x1F113: case 0x1F133: case 0x1F153: case 0x1F173: case 0x1F1E9:
+				case 0x024B9: case 0x1CCD9: case 0x1F113: case 0x1F133: case 0x1F153: case 0x1F173: case 0x1F1E9:
 					ia5_0 = 'D'; break;
-				case 0x024BA: case 0x1F114: case 0x1F134: case 0x1F154: case 0x1F174: case 0x1F1EA:
+				case 0x024BA: case 0x1CCDA: case 0x1F114: case 0x1F134: case 0x1F154: case 0x1F174: case 0x1F1EA:
 					ia5_0 = 'E'; break;
-				case 0x024BB: case 0x1F115: case 0x1F135: case 0x1F155: case 0x1F175: case 0x1F1EB:
+				case 0x024BB: case 0x1CCDB: case 0x1F115: case 0x1F135: case 0x1F155: case 0x1F175: case 0x1F1EB:
 					ia5_0 = 'F'; break;
-				case 0x024BC: case 0x1F116: case 0x1F136: case 0x1F156: case 0x1F176: case 0x1F1EC:
+				case 0x024BC: case 0x1CCDC: case 0x1F116: case 0x1F136: case 0x1F156: case 0x1F176: case 0x1F1EC:
 					ia5_0 = 'G'; break;
-				case 0x024BD: case 0x1F117: case 0x1F137: case 0x1F157: case 0x1F177: case 0x1F1ED:
+				case 0x024BD: case 0x1CCDD: case 0x1F117: case 0x1F137: case 0x1F157: case 0x1F177: case 0x1F1ED:
 					ia5_0 = 'H'; break;
-				case 0x024BE: case 0x1F118: case 0x1F138: case 0x1F158: case 0x1F178: case 0x1F1EE:
+				case 0x024BE: case 0x1CCDE: case 0x1F118: case 0x1F138: case 0x1F158: case 0x1F178: case 0x1F1EE:
 					ia5_0 = 'I'; break;
-				case 0x024BF: case 0x1F119: case 0x1F139: case 0x1F159: case 0x1F179: case 0x1F1EF:
+				case 0x024BF: case 0x1CCDF: case 0x1F119: case 0x1F139: case 0x1F159: case 0x1F179: case 0x1F1EF:
 					ia5_0 = 'J'; break;
-				case 0x024C0: case 0x1F11A: case 0x1F13A: case 0x1F15A: case 0x1F17A: case 0x1F1F0:
+				case 0x024C0: case 0x1CCE0: case 0x1F11A: case 0x1F13A: case 0x1F15A: case 0x1F17A: case 0x1F1F0:
 					ia5_0 = 'K'; break;
-				case 0x024C1: case 0x1F11B: case 0x1F13B: case 0x1F15B: case 0x1F17B: case 0x1F1F1:
+				case 0x024C1: case 0x1CCE1: case 0x1F11B: case 0x1F13B: case 0x1F15B: case 0x1F17B: case 0x1F1F1:
 					ia5_0 = 'L'; break;
-				case 0x024C2: case 0x1F11C: case 0x1F13C: case 0x1F15C: case 0x1F17C: case 0x1F1F2:
+				case 0x024C2: case 0x1CCE2: case 0x1F11C: case 0x1F13C: case 0x1F15C: case 0x1F17C: case 0x1F1F2:
 					ia5_0 = 'M'; break;
-				case 0x024C3: case 0x1F11D: case 0x1F13D: case 0x1F15D: case 0x1F17D: case 0x1F1F3:
+				case 0x024C3: case 0x1CCE3: case 0x1F11D: case 0x1F13D: case 0x1F15D: case 0x1F17D: case 0x1F1F3:
 					ia5_0 = 'N'; break;
-				case 0x024C4: case 0x1F11E: case 0x1F13E: case 0x1F15E: case 0x1F17E: case 0x1F1F4:
+				case 0x024C4: case 0x1CCE4: case 0x1F11E: case 0x1F13E: case 0x1F15E: case 0x1F17E: case 0x1F1F4:
 					ia5_0 = 'O'; break;
-				case 0x024C5: case 0x1F11F: case 0x1F13F: case 0x1F15F: case 0x1F17F: case 0x1F1F5:
+				case 0x024C5: case 0x1CCE5: case 0x1F11F: case 0x1F13F: case 0x1F15F: case 0x1F17F: case 0x1F1F5:
 					ia5_0 = 'P'; break;
-				case 0x024C6: case 0x1F120: case 0x1F140: case 0x1F160: case 0x1F180: case 0x1F1F6:
+				case 0x024C6: case 0x1CCE6: case 0x1F120: case 0x1F140: case 0x1F160: case 0x1F180: case 0x1F1F6:
 					ia5_0 = 'Q'; break;
-				case 0x024C7: case 0x1F121: case 0x1F141: case 0x1F161: case 0x1F181: case 0x1F1F7:
+				case 0x024C7: case 0x1CCE7: case 0x1F121: case 0x1F141: case 0x1F161: case 0x1F181: case 0x1F1F7:
 					ia5_0 = 'R'; break;
-				case 0x024C8: case 0x1F122: case 0x1F142: case 0x1F162: case 0x1F182: case 0x1F1F8:
+				case 0x024C8: case 0x1CCE8: case 0x1F122: case 0x1F142: case 0x1F162: case 0x1F182: case 0x1F1F8:
 					ia5_0 = 'S'; break;
-				case 0x024C9: case 0x1F123: case 0x1F143: case 0x1F163: case 0x1F183: case 0x1F1F9:
+				case 0x024C9: case 0x1CCE9: case 0x1F123: case 0x1F143: case 0x1F163: case 0x1F183: case 0x1F1F9:
 					ia5_0 = 'T'; break;
-				case 0x024CA: case 0x1F124: case 0x1F144: case 0x1F164: case 0x1F184: case 0x1F1FA:
+				case 0x024CA: case 0x1CCEA: case 0x1F124: case 0x1F144: case 0x1F164: case 0x1F184: case 0x1F1FA:
 					ia5_0 = 'U'; break;
-				case 0x024CB: case 0x1F125: case 0x1F145: case 0x1F165: case 0x1F185: case 0x1F1FB:
+				case 0x024CB: case 0x1CCEB: case 0x1F125: case 0x1F145: case 0x1F165: case 0x1F185: case 0x1F1FB:
 					ia5_0 = 'V'; break;
-				case 0x024CC: case 0x1F126: case 0x1F146: case 0x1F166: case 0x1F186: case 0x1F1FC:
+				case 0x024CC: case 0x1CCEC: case 0x1F126: case 0x1F146: case 0x1F166: case 0x1F186: case 0x1F1FC:
 					ia5_0 = 'W'; break;
-				case 0x024CD: case 0x1F127: case 0x1F147: case 0x1F167: case 0x1F187: case 0x1F1FD:
+				case 0x024CD: case 0x1CCED: case 0x1F127: case 0x1F147: case 0x1F167: case 0x1F187: case 0x1F1FD:
 					ia5_0 = 'X'; break;
-				case 0x024CE: case 0x1F128: case 0x1F148: case 0x1F168: case 0x1F188: case 0x1F1FE:
+				case 0x024CE: case 0x1CCEE: case 0x1F128: case 0x1F148: case 0x1F168: case 0x1F188: case 0x1F1FE:
 					ia5_0 = 'Y'; break;
-				case 0x024CF: case 0x1F129: case 0x1F149: case 0x1F169: case 0x1F189: case 0x1F1FF:
+				case 0x024CF: case 0x1CCEF: case 0x1F129: case 0x1F149: case 0x1F169: case 0x1F189: case 0x1F1FF:
 					ia5_0 = 'Z'; break;
 			}
 
@@ -938,7 +968,8 @@ public final class LatinDiacLiga {
 					ia5_0 = 'a'; break;
 				case 0x02C6E:
 					ia5_0 = 'M'; break;
-				case 0x02C7E: case 0x0A76C: case 0x0A784: case 0x0A7A8: case 0x0A7C9: case 0x0A7D6: case 0x0A7D8:
+				case 0x02C7E: case 0x0A76C: case 0x0A784: case 0x0A7A8: case 0x0A7C9: case 0x0A7CC: case 0x0A7CD: case 0x0A7D6:
+				case 0x0A7D8:
 					ia5_0 = 'S'; break;
 				case 0x0A773: case 0x0AB3A:
 					ia5_0 = 'm'; break;
